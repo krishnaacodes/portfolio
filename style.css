@@ -1,0 +1,305 @@
+/* --- 1. VARIABLES & SETUP --- */
+:root {
+    /* Palette: Slate (Dark Blue-Grey) & Cyan/Teal */
+    --bg-dark: #0f172a;       /* Main Background */
+    --bg-card: #1e293b;       /* Card Background */
+    --bg-card-hover: #334155; /* Card Hover */
+    --primary: #38bdf8;       /* Cyan/Blue Accent */
+    --text-main: #f1f5f9;     /* White Text */
+    --text-muted: #94a3b8;    /* Grey Text */
+    --border: #334155;        /* Subtle Borders */
+    --gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+/* --- 2. NAVIGATION --- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.85); /* Translucent */
+    backdrop-filter: blur(12px); /* Glass effect */
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    padding: 1rem 5%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo span { color: var(--primary); }
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+.btn-nav {
+    border: 1px solid var(--primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: var(--primary) !important;
+}
+
+.btn-nav:hover {
+    background: var(--primary);
+    color: var(--bg-dark) !important;
+}
+
+/* --- 3. SHARED LAYOUT UTILITIES --- */
+section {
+    padding: 6rem 5%;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* --- 4. HERO SECTION --- */
+#home {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 40%);
+}
+
+.hero-content { max-width: 700px; }
+
+.greeting {
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+#home h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 1rem 0;
+    line-height: 1.1;
+}
+
+#home h2 {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-btns {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: var(--bg-dark);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+}
+.btn-secondary:hover { border-color: var(--primary); }
+
+
+/* --- 5. CARDS (Assignments, Projects) --- */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    background: var(--bg-card-hover);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+.text-link {
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/* --- 6. CERTIFICATES (Unique Style) --- */
+.cert-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.cert-icon {
+    font-size: 2.5rem;
+    color: #f59e0b; /* Gold color */
+}
+
+.cert-info h3 { margin: 0; font-size: 1.1rem; }
+.issuer { font-size: 0.85rem; color: var(--text-muted); }
+
+/* --- 7. PROJECTS (Tags) --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tags span {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* --- 8. CONNECT GRID --- */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.social-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted);
+}
+
+.social-item i { font-size: 2rem; }
+.social-item span { font-size: 0.9rem; }
+
+.social-item:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-main);
+    transform: translateY(-3px);
+}
+
+/* Social Brand Colors on Hover */
+.social-item.gmail:hover i { color: #ea4335; }
+.social-item.linkedin:hover i { color: #0a66c2; }
+.social-item.github:hover i { color: #ffffff; }
+.social-item.code:hover i { color: var(--primary); }
+
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simple hide for mobile view to keep code clean */
+    #home h1 { font-size: 2.5rem; }
+    section { padding: 4rem 5%; }
+}
