@@ -3,201 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Data Science Student</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Krishna's Data Science Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for aesthetic enhancements */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+        }
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">MY<span>.Portfolio</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#assignments">Assignments</a></li>
-                <li><a href="#certificates">Certificates</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#connect" class="btn-nav">Connect</a></li>
-            </ul>
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem; /* For smooth scrolling offset due to fixed navbar */
+        }
+        
+        /* Custom shadow for cards */
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive Iframe container for 16:9 aspect ratio */
+        .video-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 */
+            position: relative;
+            height: 0;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .video-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border: 0;
+        }
+        
+        /* Style for social icons */
+        .icon {
+            transition: transform 0.2s;
+        }
+        .icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar (Fixed and Responsive) -->
+    <nav class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-md z-20 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Name -->
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-2xl font-bold text-indigo-600 tracking-wider">Krishna.DS</a>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-150 ease-in-out">About</a>
+                    <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition duration-150 ease-in-out">Projects</a>
+                    <a href="#assignments" class="text-gray-600 hover:text-indigo-600 transition duration-150 ease-in-out">Assignments</a>
+                    <a href="#certifications" class="text-gray-600 hover:text-indigo-600 transition duration-150 ease-in-out">Certifications</a>
+                    <a href="#connect" class="text-gray-600 hover:text-indigo-600 transition duration-150 ease-in-out">Connect</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-500 hover:text-indigo-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center bg-white shadow-lg">
+                <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">About</a>
+                <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">Projects</a>
+                <a href="#assignments" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">Assignments</a>
+                <a href="#certifications" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">Certifications</a>
+                <a href="#connect" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600">Connect</a>
+            </div>
         </div>
     </nav>
+    
+    <!-- Main Content Area - Index Page -->
+    <main id="index-page" class="mt-16 pt-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Hero Section: About Me -->
+        <section id="about" class="hero-section py-20 scroll-mt-20">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="lg:w-full">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-indigo-800 leading-tight mb-4">
+                        Data Science & Analytics Portfolio
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-6">
+                        Hello, I'm Krishna! I specialize in leveraging data to drive insights and build predictive models. My passion lies in transforming raw data into actionable intelligence.
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        I am proficient in Python (Pandas, Scikit-learn, TensorTensorFlow), SQL, and advanced data visualization techniques. This portfolio showcases some of my best work across various domains.
+                    </p>
+                    <div class="mt-8 flex flex-wrap gap-4">
 
-    <section id="home">
-        <div class="hero-content">
-            <span class="greeting">Hello, I am</span>
-            <h1>Krishna</h1>
-            <h2>Data Science Enthusiast & Developer</h2>
-            <p>I’m a BCA 5th-semester student with a strong passion for building modern web experiences. I specialize in frontend development, crafting responsive interfaces, and exploring emerging technologies in the Web3 space. I enjoy turning ideas into clean, functional, and user-friendly digital products. My goal is to continuously learn, develop better systems, and contribute to meaningful tech projects that push innovation forward.</p>
-            <div class="hero-btns">
-                <a href="#projects" class="btn-primary">View My Work</a>
-                <a href="#assignments" class="btn-secondary">See Assignments</a>
+                        <!-- Projects Button -->
+                        <a href="#projects" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                            View Projects
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/krishnaacodes" target="_blank" class="inline-flex items-center bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                            GitHub Profile
+                        </a>
+
+                        <!-- LeetCode -->
+                        <a href="https://leetcode.com/u/Krishna_upadhyay9244/" target="_blank" class="inline-flex items-center bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                            LeetCode
+                        </a>
+
+                        <!-- Gmail -->
+                        <a href="mailto:krishnkant.sjp2004@gmail.com" class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                            Email Me
+                        </a>
+
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="assignments">
-        <div class="container">
-            <h2 class="section-title">Assignments</h2>
-            <p class="section-subtitle">Academic coursework and submissions.</p>
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 scroll-mt-20 border-t border-gray-200">
+            <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">My Projects</h2>
             
-            <div class="grid-layout">
-                <div class="card assignment-card">
-                    <div class="icon-box"><i class="fas fa-database"></i></div>
-                    <h3>Data Science Assignment</h3>
-                    <p>Made youtube playlist on important topics of data science.</p>
-                    <a href="https://youtube.com/playlist?list=PLYE21JTo_8lcFIa0NTsCOYbdXvDKSCEW-&si=AKgjutWKa71DZaQZ" class="text-link">View Submission <i class="fas fa-arrow-right"></i></a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- PROJECT CARD 1: WEATHER APP -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-xl transition duration-300 border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Weather Forecast App</h3>
+                    <p class="text-gray-600 mb-4">
+                        A real-time weather application built using JavaScript and a public weather API.
+                        Users can search any city to view temperature, humidity, wind speed, and weather conditions.
+                    </p>
+
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">JavaScript</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">API</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Frontend</span>
+
+                    <div class="mt-4 flex flex-col gap-2">
+                        <a href="https://krishnaacodes.github.io/weather-app/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                            🌤️ Live Demo
+                        </a>
+                        <a href="https://github.com/krishnaacodes/weather-app" target="_blank" class="text-gray-700 hover:text-gray-900 font-medium">
+                            💻 GitHub Repository
+                        </a>
+                    </div>
                 </div>
 
-                <div class="card assignment-card">
-                    <div class="icon-box"><i class="fab fa-python"></i></div>
-                    <h3>Computer Graphics Assignment</h3>
-                    <p>Understanding 2D Transformation</p>
-                    <a href="https://youtu.be/ccZ4ptlI-4g?si=1_hcZGc5wPqR7ZaY" class="text-link">View Submission <i class="fas fa-arrow-right"></i></a>
+                <!-- PROJECT CARD 2: CURRENCY CONVERTER -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-xl transition duration-300 border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Currency Converter Web App</h3>
+                    <p class="text-gray-600 mb-4">
+                        A modern currency converter that uses live exchange rates with an intuitive and responsive UI.
+                        Built using JavaScript and deployed on Vercel for top performance.
+                    </p>
+
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">JavaScript</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">API</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Vercel</span>
+
+                    <div class="mt-4 flex flex-col gap-2">
+                        <a href="https://currency-converter-xi-umber.vercel.app/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                            🔗 Live Converter
+                        </a>
+                        <a href="https://github.com/krishnaacodes/currency-converter" target="_blank" class="text-gray-700 hover:text-gray-900 font-medium">
+                            💻 GitHub Repository
+                        </a>
+                    </div>
                 </div>
 
-                <!-- <div class="card assignment-card">
-                    <div class="icon-box"><i class="fas fa-chart-bar"></i></div>
-                    <h3>Statistical Analysis</h3>
-                    <p>Hypothesis testing and A/B testing simulations using R.</p>
-                    <a href="#" class="text-link">View Submission <i class="fas fa-arrow-right"></i></a>
-                </div> -->
+                <!-- PROJECT CARD 3: SNAKE GAME -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-xl transition duration-300 border border-gray-100">
+                    <h3 class="text-2xl font-semibold text-indigo-700 mb-3">Classic Snake Game</h3>
+                    <p class="text-gray-600 mb-4">
+                        A smooth and responsive Snake Game built with HTML, CSS, and JavaScript.
+                        Includes scoring, controls, and a modern retro UI — fully deployed on Vercel.
+                    </p>
+
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">HTML</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">CSS</span>
+                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+
+                    <div class="mt-4 flex flex-col gap-2">
+                        <a href="https://snakegame-iota-ochre.vercel.app/" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                            🎮 Play Live
+                        </a>
+                        <a href="https://github.com/krishnaacodes/snakegame" target="_blank" class="text-gray-700 hover:text-gray-900 font-medium">
+                            💻 GitHub Repository
+                        </a>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="certificates" class="alt-bg">
-        <div class="container">
-            <h2 class="section-title">Certificates & Achievements</h2>
+        <!-- Assignments Section -->
+        <section id="assignments" class="py-20 scroll-mt-20 border-t border-gray-200">
+            <h2 class="text-4xl font-bold text-center text-indigo-800 mb-8">Data Science Assignments</h2>
+            <div class="text-center">
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+                    This section contains a collection of my data science assignments, including analytical reports, coding challenges, and video presentations.
+                </p>
+                <button onclick="navigateTo('assignments-list')" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-10 rounded-lg transition duration-300 transform hover:scale-105 shadow-xl text-lg">
+                    View Data Science Assignments
+                </button>
+            </div>
+        </section>
+        
+        <!-- Certifications Section (NEW) -->
+        <section id="certifications" class="py-20 scroll-mt-20 border-t border-gray-200">
+            <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Certifications & Achievements</h2>
             
-            <div class="grid-layout">
-                <div class="card cert-card">
-                    <i class="fas fa-award cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>HackerRank skill certtificate</h3>
-                        <span class="issuer">HackerRank</span>
-                          <a href="https://www.hackerrank.com/certificates/e73583dcfd3d" class="text-link">View Submission <i class="fas fa-arrow-right"></i></a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-                    </div>
+                <!-- Certification Card 1 — HackerRank -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-xl transition duration-300 border border-indigo-200">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">HackerRank Certificate</h3>
+                    <p class="text-gray-600 mb-1">Issued by HackerRank</p>
+                    <a href="https://www.hackerrank.com/certificates/e73583dcfd3d" target="_blank" class="text-sm text-indigo-500 hover:text-indigo-600 font-medium mt-2 inline-block">
+                        View Credential →
+                    </a>
                 </div>
 
-                <!-- <div class="card cert-card">
-                    <i class="fas fa-medal cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Hackathon Winner 2024</h3>
-                        <span class="issuer">University CodeFest</span>
-                    </div>
-                </div> -->
-
-                <div class="card cert-card">
-                    <i class="fas fa-graduation-cap cert-icon"></i>
-                    <div class="cert-info">
-                        <h3>Intro to AI</h3>
-                        <span class="issuer">hp</span>
-                        <a href="image.png" class="text-link">View Submission <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                <!-- Certification Card 2 — HP LIFE -->
+                <div class="bg-white p-6 rounded-xl card-shadow hover:shadow-xl transition duration-300 border border-indigo-200">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">AI for Beginners</h3>
+                    <p class="text-gray-600 mb-1">Issued by HP LIFE (HP Foundation)</p>
+                    <!-- <p class="text-sm text-gray-500">Completed: November 2025</p> -->
+                     <a class="mt-2" href="image.png" class="text-link">View Certificate<i class="fas fa-arrow-right"></i></a>
                 </div>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-subtitle">Real-world applications and code.</p>
-
-            <div class="grid-layout">
-                <div class="card project-card">
-                    <div class="card-header">
-                        <h3>Weather App</h3>
-                        <div class="links">
-                            <a href="https://github.com/krishnaacodes/weather-app"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <p>check weather in your city</p>
-                    <div class="tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JS</span>
-                        <span>React</span>
-                      
-                    </div>
-                    <a href="https://krishnaacodes.github.io/weather-app/" class="text-link">Live Link <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card project-card">
-                    <div class="card-header">
-                        <h3>Snake Game</h3>
-                        <div class="links">
-                            <a href="https://github.com/krishnaacodes/snakegame"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <p>change you mood by playing game.</p>
-                    <div class="tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Js</span>
-                        <span>React</span>
-                     
-                    </div>
-                    <a href="https://snakegame-iota-ochre.vercel.app/" class="text-link">Live Link<i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <div class="card project-card">
-                    <div class="card-header">
-                        <h3>CURRENCY CONVERTOR</h3>
-                        <div class="links">
-                            <a href="https://github.com/krishnaacodes/currency-converter"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <p>find the value of your currency in other countries.</p>
-                    <div class="tags">
-                        <span>React</span>
-                        
-                    </div>
-                    <a href="https://currency-converter-xi-umber.vercel.app/" class="text-link">Live Link <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="connect">
-        <div class="container">
-            <h2 class="section-title">Connect With Me</h2>
-            <p class="section-subtitle">Feel free to reach out for collaborations or just a chat.</p>
+        <!-- Connect Section -->
+        <section id="connect" class="py-20 scroll-mt-20 border-t border-gray-200">
+            <h2 class="text-4xl font-bold text-center text-indigo-800 mb-12">Connect With Me</h2>
             
-            <div class="social-grid">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnkant.sjp2004@gmail.com" class="social-item gmail">
-                    <i class="fas fa-envelope"></i>
-                    <span>Gmail</span>
+            <div class="flex flex-wrap justify-center gap-6">
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/krishnkant-upadhyay-b56700379/" target="_blank" class="flex flex-col items-center p-4 w-32 h-32 bg-white rounded-xl card-shadow hover:bg-indigo-50 transition duration-300 icon border border-gray-100">
+                    <svg class="w-10 h-10 text-blue-700 mb-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.55v-5.603c0-1.33-.24-2.327-1.428-2.327-1.18 0-2.02.793-2.02 2.327v5.603h-3.55S10.22 10.375 10.22 8.783V6.24h3.55v1.64c.484-.96 1.76-1.64 3.19-1.64C18.43 6.24 20.447 8.01 20.447 11.233v9.22zm-12.72-13.84c-1.397 0-2.535-1.138-2.535-2.538 0-1.398 1.138-2.538 2.535-2.538 1.4 0 2.535 1.14 2.535 2.538 0 1.4-.24 2.538-2.535 2.538zM6.974 8.783h3.55V20.452H6.974V8.783z"/></svg>
+                    <span class="text-sm font-medium text-gray-700">LinkedIn</span>
                 </a>
-                <a href="https://www.linkedin.com/in/krishnkant-upadhyay-b56700379/" target="_blank" class="social-item linkedin">
-                    <i class="fab fa-linkedin-in"></i>
-                    <span>LinkedIn</span>
+                
+                <!-- GitHub -->
+                <a href="https://github.com/krishnaacodes" target="_blank" class="flex flex-col items-center p-4 w-32 h-32 bg-white rounded-xl card-shadow hover:bg-gray-50 transition duration-300 icon border border-gray-100">
+                    <svg class="w-10 h-10 text-gray-800 mb-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.372 0 0 5.372 0 12c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.34.725-4.04-1.61-4.04-1.61-.546-1.387-1.334-1.756-1.334-1.756-1.09-.745.084-.73.084-.73 1.207.085 1.84.124 1.84.124 1.07 1.83 2.804 1.3 3.49.993.11-.775.424-1.3.77-1.59-2.67-.3-5.465-1.33-5.465-5.93 0-1.31.465-2.38 1.235-3.22-.12-.3-.535-1.52.12-3.18 0 0 1-.32 3.3.125 1.0-.28 2.06-.42 3.1-.42 1.04 0 2.1.14 3.1.42 2.29-445 3.29-.125 3.29-.125.66 1.66.245 2.88.12 3.18.77.84 1.235 1.91 1.235 3.22 0 4.61-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22 0 1.61-.015 2.9-.015 3.29 0 .32.22.69.82.57C20.56 21.8 24 17.303 24 12c0-6.628-5.372-12-12-12z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm font-medium text-gray-700">GitHub</span>
                 </a>
-                <a href="https://github.com/krishnaacodes" target="_blank" class="social-item github">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
+                
+                <!-- LeetCode -->
+                <a href="https://leetcode.com/u/Krishna_upadhyay9244/" target="_blank" class="flex flex-col items-center p-4 w-32 h-32 bg-white rounded-xl card-shadow hover:bg-yellow-50 transition duration-300 icon border border-gray-100">
+                    <svg class="w-10 h-10 text-yellow-600 mb-2" fill="currentColor" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 24H0v24h12V24zM36 24H24v24h12V24zM48 0H36v24h12V0zM12 0H0v24h12V0zM36 0H24v24h12V0zM24 0H12v24h12V0z" clip-rule="evenodd"/></svg>
+                    <span class="text-sm font-medium text-gray-700">LeetCode</span>
                 </a>
-
-                <a href="https://leetcode.com/u/Krishna_upadhyay9244/" target="_blank" class="social-item code">
-                    <i class="fas fa-code"></i>
-                    <span>LeetCode</span>
+                
+                <!-- Gmail -->
+                <a href="mailto:krishnkant.sjp2004@gmail.com" class="flex flex-col items-center p-4 w-32 h-32 bg-white rounded-xl card-shadow hover:bg-red-50 transition duration-300 icon border border-gray-100">
+                    <svg class="w-10 h-10 text-red-600 mb-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                    <span class="text-sm font-medium text-gray-700">Email (Gmail)</span>
                 </a>
                 
             </div>
+        </section>
 
-            <footer>
-                <p>&copy; 2024 krishna. All Rights Reserved.</p>
-            </footer>
+    </main>
+
+    <!-- Assignments Subpage Section (Hidden by default) -->
+    <section id="assignments-page" class="hidden mt-16 pt-8 pb-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- The back button text and functionality changes based on the current view state -->
+        <button onclick="goBack()" id="back-button" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 mb-8 font-medium">
+            <svg class="w-4 h-4 mr-1 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+            <span id="back-button-text">Back to Main Portfolio</span>
+        </button>
+
+        <!-- Dynamic Title -->
+        <h2 id="assignment-title" class="text-4xl font-bold text-indigo-800 mb-10">Data Science Assignments</h2>
+
+        <!-- 1. Assignment Categories View (Initial Assignments Page) -->
+        <div id="assignment-categories-view" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         </div>
+
+        <!-- 2. Video List View -->
+        <div id="video-list-view" class="hidden">
+            <div id="video-list" class="grid grid-cols-1 lg:grid-cols-2 gap-10"></div>
+        </div>
+
     </section>
 
-</body>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">&copy; <span id="current-year"></span> Krishna. Data Science Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script>
+const assignments = [
+{
+    id: 'internal1',
+    title: 'Internal Assignment 1',
+    description: 'Includes Section A, B, C, and D videos for Internal Assessment 1.',
+    videos: [
+        { id: 'e_WJcpbTr1o', title: 'Section A' },
+        { id: 'OkzrHsuNwyU', title: 'Section B' },
+        { id: '2rB1kCS8lR8', title: 'Section C & D' }
+    ]
+},
+   {
+    id: 'internal2',
+    title: 'Internal Assignment 2',
+    description: 'Includes  video for Internal Assessment 2.',
+    videos: [
+        { id: 'OfAJnv45xXk', title: 'Section A' }
+    ]
+},
+   {
+    id: 'internal3',
+    title: 'Internal Assignment 3',
+    description: 'Contains 10 video solutions for 10 different questions.',
+    videos: [
+        { id: 'NfiO_XU80JU', title: 'Question 1' },
+        { id: 'S-FnMMnUyao', title: 'Question 2' },
+        { id: 'pWRxxn3Lz3g', title: 'Question 3' },
+        { id: '89syz4B3p6k', title: 'Question 4' },
+        { id: 'GANbjg9TsGQ', title: 'Question 5' },
+        { id: 'VtwVdxf61vo', title: 'Question 6' },
+        { id: 'KywZWfSxn4c', title: 'Question 7' },
+        { id: 'T1ctjgH_0JA', title: 'Question 8' },
+        { id: 'PJJ0Dbx9VYE', title: 'Question 9' },
+        { id: 'uSsndcdrcLI', title: 'Question 10' }
+    ]
+},
+    {
+        id: 'endsem',
+        title: 'End Semester Assignment',
+        description: 'This section includes all end-semester tasks and final project submissions.',
+        videos: [
+            { id: 'aircAapnPMM', title: 'EndSem - Video 1' },
+            { id: 'dQw4w9WgXcQ', title: 'EndSem - Video 2' }
+        ]
+    }
+];
+
+
+        const indexPage = document.getElementById('index-page');
+        const assignmentsPage = document.getElementById('assignments-page');
+        const categoriesView = document.getElementById('assignment-categories-view');
+        const videoListView = document.getElementById('video-list-view');
+        const videoListContainer = document.getElementById('video-list');
+        const assignmentTitleElement = document.getElementById('assignment-title');
+        const backButtonText = document.getElementById('back-button-text');
+
+        let currentView = 'index';
+        let currentAssignment = null;
+
+        function navigateTo(view) {
+            window.scrollTo(0, 0);
+            
+            if (view === 'assignments-list') {
+                currentView = 'assignments-list';
+                indexPage.classList.add('hidden');
+                assignmentsPage.classList.remove('hidden');
+
+                categoriesView.classList.remove('hidden');
+                videoListView.classList.add('hidden');
+
+                assignmentTitleElement.textContent = 'Data Science Assignments';
+                backButtonText.textContent = 'Back to Main Portfolio';
+                
+                renderAssignmentCategories();
+
+            } else {
+                currentView = 'index';
+                indexPage.classList.remove('hidden');
+                assignmentsPage.classList.add('hidden');
+            }
+        }
+
+        function selectAssignment(assignmentId) {
+            currentAssignment = assignments.find(a => a.id === assignmentId);
+
+            if (currentAssignment) {
+                currentView = 'video-detail';
+                
+                categoriesView.classList.add('hidden');
+                videoListView.classList.remove('hidden');
+
+                assignmentTitleElement.textContent = `Videos for: ${currentAssignment.title}`;
+                backButtonText.textContent = 'Back to Assignment Categories';
+
+                renderVideoList(currentAssignment.videos);
+            }
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            if (currentView === 'video-detail') {
+                navigateTo('assignments-list');
+            } else if (currentView === 'assignments-list') {
+                navigateTo('index');
+            }
+        }
+
+        function renderAssignmentCategories() {
+            categoriesView.innerHTML = '';
+
+            assignments.forEach(assignment => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-6 rounded-xl card-shadow hover:shadow-xl transition duration-300 border border-gray-100 cursor-pointer hover:border-indigo-400';
+                card.setAttribute('onclick', `selectAssignment('${assignment.id}')`);
+                
+                const title = document.createElement('h3');
+                title.className = 'text-2xl font-semibold text-indigo-700 mb-3';
+                title.textContent = assignment.title;
+
+                const description = document.createElement('p');
+                description.className = 'text-gray-600';
+                description.textContent = assignment.description;
+
+                card.appendChild(title);
+                card.appendChild(description);
+                categoriesView.appendChild(card);
+            });
+        }
+        
+        function renderVideoList(videos) {
+            videoListContainer.innerHTML = '';
+            
+            videos.forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'bg-white p-6 rounded-xl card-shadow border border-gray-100';
+                
+                const title = document.createElement('h3');
+                title.className = 'text-xl font-semibold text-indigo-700 mb-4';
+                title.textContent = video.title;
+
+                const iframeContainer = document.createElement('div');
+                iframeContainer.className = 'video-responsive';
+
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${video.id}`);
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.setAttribute('loading', 'lazy');
+
+                iframeContainer.appendChild(iframe);
+                videoCard.appendChild(title);
+                videoCard.appendChild(iframeContainer);
+                videoListContainer.appendChild(videoCard);
+            });
+        }
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            navigateTo('index');
+
+            if (window.location.hash && window.location.hash.includes('assignments')) {
+                navigateTo('assignments-list');
+            }
+        });
+    </script>
+</body>
 </html>
+
+
 
 
